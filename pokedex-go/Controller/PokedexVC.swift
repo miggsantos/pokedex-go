@@ -8,12 +8,13 @@
 
 import UIKit
 
-var PokemonList=["001","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323","002","003","004","005","101","234","323"]
+
 
 class PokedexVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var collectioinViewFlowLayout: UICollectionViewFlowLayout!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +24,24 @@ class PokedexVC: UIViewController {
         
         collectionView.reloadData()
         
+        for x in PokemonList {
+            print(x)
+        }
+        
     }
     
     @IBAction func go_back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SEGUE_TO_POKEDEX_DETAILS_VC {
+            if let detailsVC = segue.destination as? PokedexDetailsVC {
+                if let index = sender as? Int {
+                    detailsVC.selectedIndex = index
+                }
+            }
+        }
     }
 }
 
@@ -52,8 +67,23 @@ extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 117, height: 117)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("indexPath.row= \(indexPath.row)")
+        performSegue(withIdentifier: SEGUE_TO_POKEDEX_DETAILS_VC, sender: indexPath.row)
     }
+    
+
+
+}
+extension PokedexVC: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat =  50
+        let collectionViewSize = collectionView.frame.size.width - padding
+        
+        return CGSize(width: collectionViewSize/POKEDEX_COLUMNS_NUMBER, height: collectionViewSize/POKEDEX_COLUMNS_NUMBER)
+    }
+    
+
     
 }

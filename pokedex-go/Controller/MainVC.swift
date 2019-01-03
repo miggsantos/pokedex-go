@@ -8,13 +8,36 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+var PokemonList=[String]()
 
+class MainVC: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        fillArray()
     }
 
+    func fillArray() {
+        var count = 1
+        while count < MAX_POKEMON_NUMBER + 1 {
+            var number : String
+            if count < 10 {
+                number = "00\(count)"
+            }
+            else if count < 100 {
+                number = "0\(count)"
+                
+            } else {
+                number = "\(count)"
+            }
+            
+            
+            PokemonList.append(number)
+            count+=1
+        }
+        
 
+    }
 }
 
