@@ -13,6 +13,7 @@ var PokemonList=["001","002","003","004","005","101","234","323","002","003","00
 class PokedexVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,9 @@ class PokedexVC: UIViewController {
         
     }
     
-
-
+    @IBAction func go_back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -40,16 +42,13 @@ extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_POKEDEX, for: indexPath) as? PokedexCell {
             
-            print(PokemonList[indexPath.row])
             cell.configure(id: PokemonList[indexPath.row])
             
             return cell
         }
-        
-        
+
         return UICollectionViewCell()
     }
     

@@ -22,7 +22,11 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HA-7m-hTq">
-                                <rect key="frame" x="159" y="440" width="96" height="96"/>
+                                <rect key="frame" x="159" y="540" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="5ty-WC-Ss3"/>
+                                    <constraint firstAttribute="width" constant="96" id="xVb-2t-i3V"/>
+                                </constraints>
                                 <state key="normal" image="btn_trade_swap"/>
                                 <connections>
                                     <segue destination="1qp-ki-gP6" kind="show" id="tWg-0v-ncX"/>
@@ -35,11 +39,12 @@
                             <constraint firstItem="SM0-4u-61f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9XP-QS-r9A"/>
                             <constraint firstItem="SM0-4u-61f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EYB-3P-FYj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SM0-4u-61f" secondAttribute="bottom" id="YYd-s3-VLJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7HA-7m-hTq" secondAttribute="bottom" constant="200" id="emZ-13-q33"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7HA-7m-hTq" secondAttribute="bottom" constant="100" id="emZ-13-q33"/>
                             <constraint firstItem="7HA-7m-hTq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hhK-qY-fNv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="No0-B0-Sb7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,6 +112,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J3-Jh-f1X">
+                                <rect key="frame" x="182" y="586" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4RK-nf-6go"/>
+                                    <constraint firstAttribute="width" constant="50" id="mdZ-1U-jS8"/>
+                                </constraints>
+                                <state key="normal" image="btn_close_normal"/>
+                                <connections>
+                                    <action selector="go_back:" destination="1qp-ki-gP6" eventType="touchUpInside" id="eab-R2-6co"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -119,8 +135,10 @@
                             <constraint firstItem="Mk4-gg-S77" firstAttribute="top" secondItem="TIF-4b-LJP" secondAttribute="bottom" id="YHf-8N-G16"/>
                             <constraint firstItem="Mk4-gg-S77" firstAttribute="bottom" secondItem="wC2-6E-6E6" secondAttribute="bottom" id="aBm-a5-ra3"/>
                             <constraint firstItem="T5X-XQ-CbI" firstAttribute="leading" secondItem="wC2-6E-6E6" secondAttribute="leading" id="anP-kb-a6q"/>
+                            <constraint firstItem="2J3-Jh-f1X" firstAttribute="centerX" secondItem="Ihc-gO-cba" secondAttribute="centerX" id="b2h-Mr-iF8"/>
                             <constraint firstItem="T5X-XQ-CbI" firstAttribute="top" secondItem="wC2-6E-6E6" secondAttribute="top" id="dvF-eH-aGz"/>
                             <constraint firstItem="wC2-6E-6E6" firstAttribute="bottom" secondItem="T5X-XQ-CbI" secondAttribute="bottom" id="ll1-uM-1hs"/>
+                            <constraint firstItem="wC2-6E-6E6" firstAttribute="bottom" secondItem="2J3-Jh-f1X" secondAttribute="bottom" constant="100" id="mnD-SU-YZ6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wC2-6E-6E6"/>
                     </view>
@@ -132,8 +150,24 @@
             </objects>
             <point key="canvasLocation" x="820.28985507246387" y="131.25"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ULT-BE-Qa2">
+            <objects>
+                <viewController id="lFY-F9-JtS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QHO-wO-RFq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wJa-qT-HXf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUA-mP-uEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647" y="130"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="btn_close_normal" width="96" height="96"/>
         <image name="btn_trade_swap" width="96" height="96"/>
         <image name="pokemon_icon_000" width="192" height="192"/>
         <image name="ui_bg_green_03" width="48" height="48"/>
