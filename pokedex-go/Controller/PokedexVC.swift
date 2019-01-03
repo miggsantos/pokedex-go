@@ -24,10 +24,6 @@ class PokedexVC: UIViewController {
         
         collectionView.reloadData()
         
-        for x in PokemonList {
-            print(x)
-        }
-        
     }
     
     @IBAction func go_back(_ sender: Any) {
@@ -68,7 +64,7 @@ extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("indexPath.row= \(indexPath.row)")
+        //print("indexPath.row= \(indexPath.row)")
         performSegue(withIdentifier: SEGUE_TO_POKEDEX_DETAILS_VC, sender: indexPath.row)
     }
     
