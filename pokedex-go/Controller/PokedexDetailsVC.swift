@@ -28,6 +28,7 @@ class PokedexDetailsVC: UIViewController {
         let scrollView = collectionView as UIScrollView
         scrollView.delegate = self
 
+   
     }
     
     override func viewDidAppear(_ animated: Bool) {

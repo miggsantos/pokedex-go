@@ -32,6 +32,17 @@ class PokedexDetailsCell: UICollectionViewCell {
     func configure(pokemon:Pokemon){
         pokemonImage.image = UIImage(named: pokemon.id_img_url)
 
+        
+        pokemon.getPokemonDetails(pokemonId: "\(pokemon.id)") { (result) in
+            self.pokemonWeight.text = pokemon.weight
+            self.pokemonHeight.text = pokemon.height
+        }
+        
+        pokemon.getPokemonDescription(pokemonId: "\(pokemon.id)") { (result) in
+            self.pokemonDescription.text = pokemon.description
+        }
+
+        
         pokemonNumber.text = "\(pokemon.id)"
         pokemonName.text = pokemon.name
         pokemonType.text = "\(pokemon.type1)"
