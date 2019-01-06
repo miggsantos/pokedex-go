@@ -9,6 +9,7 @@
 import UIKit
 
 var PokemonList=[Pokemon]()
+var GenerationsCount = [String:Int]()
 
 class MainVC: UIViewController {
     
@@ -39,7 +40,18 @@ class MainVC: UIViewController {
                 let gen = row["gen"]!
                 let poke = Pokemon(id: pokeId, name: name, type1: type1, type2: type2, generation: gen, evo1: evo1, evo2: evo2, evo3: evo3, evo4: evo4)
                 PokemonList.append(poke)
+                
+                GenerationsCount[gen, default: 0] += 1
             }
+            
+
+            
+            print (GenerationsCount)
+            
+            
+            
+            
+            
             
         } catch let err as NSError {
             print(err.debugDescription)
