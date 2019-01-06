@@ -58,8 +58,6 @@ class PokedexDetailsVC: UIViewController {
             backgroundImageView2.frame = backgroundImageView2.frame.offsetBy(dx: -1 * backgroundImageView2.frame.size.width, dy: 0.0)
             self.view.layoutIfNeeded()
         }, completion: nil)
-        
-
     }
 
     @IBAction func go_back(_ sender: Any) {
@@ -87,7 +85,8 @@ extension PokedexDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource
         // print("indexPath.row= \(indexPath.row)")
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_POKEDEX_DETAILS, for: indexPath) as? PokedexDetailsCell {
-            cell.configure(id: PokemonList[indexPath.row])
+            let pokemon = PokemonList[indexPath.row]
+            cell.configure(id: pokemon.id, name: pokemon.name, type1: pokemon.type1, type2: pokemon.type2)
             return cell
         }
         
