@@ -20,6 +20,8 @@ class PokedexDetailsCell: UICollectionViewCell {
     @IBOutlet weak var pokemonEvolutionImage1: UIImageView!
     @IBOutlet weak var pokemonEvolutionImage2: UIImageView!
     @IBOutlet weak var pokemonEvolutionImage3: UIImageView!
+    @IBOutlet weak var arrowImage1: UIImageView!
+    @IBOutlet weak var arrowImage2: UIImageView!
     
     
     override func awakeFromNib() {
@@ -27,17 +29,54 @@ class PokedexDetailsCell: UICollectionViewCell {
         self.sizeToFit()
     }
     
-    func configure(id:String, name: String, type1: String, type2: String){
-        pokemonImage.image = UIImage(named: "pokemon_icon_" + id + "_00")
-        pokemonEvolutionImage1.image = UIImage(named: "pokemon_icon_" + id + "_00")
-        pokemonEvolutionImage2.image = UIImage(named: "pokemon_icon_" + id + "_00")
-        pokemonEvolutionImage3.image = UIImage(named: "pokemon_icon_" + id + "_00")
-        
-        pokemonNumber.text = id
-        pokemonName.text = name
-        pokemonType.text = "\(type1)"
-        if type2 != "" {
-           pokemonType.text = "\(type1) / \(type2)"
+    func configure(pokemon:Pokemon){
+        pokemonImage.image = UIImage(named: pokemon.id_img_url)
+
+        pokemonNumber.text = "\(pokemon.id)"
+        pokemonName.text = pokemon.name
+        pokemonType.text = "\(pokemon.type1)"
+        if pokemon.type2 != "" {
+           pokemonType.text = "\(pokemon.type1) / \(pokemon.type2)"
         }
+        
+        // Evolution
+        
+        pokemonEvolutionImage1.isHidden = false
+        pokemonEvolutionImage2.isHidden = false
+        pokemonEvolutionImage3.isHidden = false
+        arrowImage1.isHidden = false
+        arrowImage2.isHidden = false
+        
+        if pokemon.evo1_img_url == "" {
+            pokemonEvolutionImage1.image = UIImage(named: pokemon.id_img_url)
+            arrowImage1.isHidden = true
+            pokemonEvolutionImage2.isHidden = true
+            arrowImage2.isHidden = true
+            pokemonEvolutionImage3.isHidden = true
+
+            return
+        } else {
+            pokemonEvolutionImage1.image = UIImage(named: pokemon.evo1_img_url)
+        }
+        
+        if pokemon.evo2_img_url == "" {
+            arrowImage1.isHidden = true
+            arrowImage2.isHidden = true
+            pokemonEvolutionImage2.isHidden = true
+            pokemonEvolutionImage3.isHidden = true
+            return
+        } else {
+            pokemonEvolutionImage2.image = UIImage(named: pokemon.evo2_img_url)
+        }
+        
+        if pokemon.evo3_img_url == "" {
+            arrowImage2.isHidden = true
+            pokemonEvolutionImage3.isHidden = true
+        } else {
+            
+            pokemonEvolutionImage3.image = UIImage(named: pokemon.evo3_img_url)
+        }
+        
+        
     }
 }

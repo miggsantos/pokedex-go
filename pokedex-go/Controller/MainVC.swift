@@ -15,7 +15,6 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //fillArray()
         parsePokemonCSV()
         
     }
@@ -28,58 +27,24 @@ class MainVC: UIViewController {
             let rows = csv.rows
             
             for row in rows{
-                
-                //let pokeId = Int(row["id"]!)!
-                //let pokeId = row["id"]!
-                var pokeId = ""
-            
-                let count = Int(row["id"]!)!
-                if count < 10 {
-                    pokeId = "00\(count)"
-                }
-                else if count < 100 {
-                    pokeId = "0\(count)"
-                    
-                } else {
-                    pokeId = "\(count)"
-                }
-                
+
+                let pokeId = Int(row["id"]!)!
                 let name = row["name"]!
                 let type1 = row["type1"]!
                 let type2 = row["type2"]!
+                let evo1 = row["evo1"]!
+                let evo2 = row["evo2"]!
+                let evo3 = row["evo3"]!
+                let evo4 = row["evo4"]!
                 let gen = row["gen"]!
-                let poke = Pokemon(id: pokeId, name: name, type1: type1, type2: type2, generation: gen)
+                let poke = Pokemon(id: pokeId, name: name, type1: type1, type2: type2, generation: gen, evo1: evo1, evo2: evo2, evo3: evo3, evo4: evo4)
                 PokemonList.append(poke)
             }
             
-            //print(rows)
         } catch let err as NSError {
             print(err.debugDescription)
         }
     }
-    
-    /*
-    func fillArray() {
-        var count = 1
-        while count < MAX_POKEMON_NUMBER + 1 {
-            var number : String
-            if count < 10 {
-                number = "00\(count)"
-            }
-            else if count < 100 {
-                number = "0\(count)"
-                
-            } else {
-                number = "\(count)"
-            }
-            
-            
-            PokemonList.append(number)
-            count+=1
-        }
- 
-
-    }
-     */
+  
 }
 

@@ -23,6 +23,8 @@ class PokedexDetailsVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        collectionViewFlowLayout.minimumLineSpacing = 0
+        
         let scrollView = collectionView as UIScrollView
         scrollView.delegate = self
 
@@ -86,7 +88,7 @@ extension PokedexDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_POKEDEX_DETAILS, for: indexPath) as? PokedexDetailsCell {
             let pokemon = PokemonList[indexPath.row]
-            cell.configure(id: pokemon.id, name: pokemon.name, type1: pokemon.type1, type2: pokemon.type2)
+            cell.configure(pokemon: pokemon)
             return cell
         }
         
@@ -96,10 +98,12 @@ extension PokedexDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 extension PokedexDetailsVC: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = collectionView.bounds.width
         let itemHeight = collectionView.bounds.height
         return CGSize(width: itemWidth, height: itemHeight)
     }
+
     
 }

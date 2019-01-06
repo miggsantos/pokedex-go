@@ -12,8 +12,7 @@ class PokedexCell: UICollectionViewCell {
     
     @IBOutlet weak var pokemonImage: UIImageView!
     
-    func configure(id:String){
-        //print("id="+ id)
-        pokemonImage.image = UIImage(named: "pokemon_icon_" + id + "_00")
+    func configure(img:String){
+        pokemonImage.image = UIImage(named: img)
     }
 }

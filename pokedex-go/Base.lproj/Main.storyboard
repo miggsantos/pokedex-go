@@ -163,7 +163,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedex_entry_background" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-3x-glO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dXn-mV-d0o">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dXn-mV-d0o">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dil-Nx-DCS">
@@ -342,6 +342,8 @@
                                             <constraint firstItem="pKh-iY-TyV" firstAttribute="top" secondItem="G6Z-zl-U8t" secondAttribute="bottom" constant="10" id="mc4-DM-3MU"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="arrowImage1" destination="lYM-fQ-pTe" id="CXB-xr-SMY"/>
+                                            <outlet property="arrowImage2" destination="OMx-lb-RtD" id="Z1b-9h-bHp"/>
                                             <outlet property="pokemonDescription" destination="xUq-sz-Qct" id="DML-Ob-og0"/>
                                             <outlet property="pokemonEvolutionImage1" destination="gaf-OE-ZFQ" id="zJy-HZ-yTR"/>
                                             <outlet property="pokemonEvolutionImage2" destination="pmr-QN-fGj" id="jIG-Dz-jKf"/>

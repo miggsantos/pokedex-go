@@ -1,6 +1,9 @@
 //
-//  CSV
-//  Modified by Mark Price on 08/14/15
+//  cvs.swift
+//  pokedex-go
+//
+//  Modified by Miguel Santos on 06/01/2019.
+//  Copyright © 2019 Miguel Santos. All rights reserved.
 //
 
 import Foundation

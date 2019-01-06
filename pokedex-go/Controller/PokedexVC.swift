@@ -55,7 +55,7 @@ extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_POKEDEX, for: indexPath) as? PokedexCell {
             
-            cell.configure(id: PokemonList[indexPath.row].id)
+            cell.configure(img: PokemonList[indexPath.row].id_img_url)
             
             return cell
         }
