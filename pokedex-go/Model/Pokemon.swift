@@ -162,8 +162,7 @@ class Pokemon {
         }
         
         Alamofire.request(url,
-                          method: .get,
-                          parameters: ["include_docs": "true"])
+                          method: .get)
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
