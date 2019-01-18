@@ -43,24 +43,38 @@ class PokedexVC: UIViewController {
 
 extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PokemonList.count
-    
+        return GenerationsCount[section + 1]!
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return GenerationsCount.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_POKEDEX, for: indexPath) as? PokedexCell {
+
+            let pokemon_start_index_for_region = Utils.getFirstIndexPokemonByRegion(region: indexPath.section + 1)
             
-            cell.configure(img: PokemonList[indexPath.row].id_img_url)
+            cell.configure(img: PokemonList[pokemon_start_index_for_region + indexPath.row].id_img_url)
             
             return cell
         }
 
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CELL_POKEDEX_SECTION, for: indexPath) as? PokedexSectionCell{
+            
+            if let region = REGIONS[indexPath.section] {
+                cell.configuration(region: region)
+                return cell
+            }
+        }
+        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -80,6 +94,8 @@ extension PokedexVC: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
         return CGSize(width: collectionViewSize/POKEDEX_COLUMNS_NUMBER, height: collectionViewSize/POKEDEX_COLUMNS_NUMBER)
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 60)
+    }
     
 }
