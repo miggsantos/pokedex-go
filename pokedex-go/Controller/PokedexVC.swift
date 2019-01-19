@@ -79,7 +79,10 @@ extension PokedexVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("indexPath.row= \(indexPath.row)")
-        performSegue(withIdentifier: SEGUE_TO_POKEDEX_DETAILS_VC, sender: indexPath.row)
+        
+        let pokemon_start_index_for_region = Utils.getFirstIndexPokemonByRegion(region: indexPath.section + 1)
+        
+        performSegue(withIdentifier: SEGUE_TO_POKEDEX_DETAILS_VC, sender: pokemon_start_index_for_region + indexPath.row)
     }
     
 
