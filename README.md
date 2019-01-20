@@ -14,9 +14,6 @@ Was built using swift, with the following libraries:
 * Alamofire - to fetch the description, height and weight
 * SwiftyJSON - to made the life easier to decode the json from the api
 
-### Todo! ###
-
-I will update soon all missing evolutions from the pokemon.csv file
 
 
 
